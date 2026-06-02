@@ -1,0 +1,74 @@
+<section class="analysis">
+  <header class="analysis__header">
+    <h1 class="analysis__title">FIFA Next</h1>
+    <p class="analysis__subtitle">Automated Biomechanics Analysis</p>
+  </header>
+
+  <form class="analysis__form" (ngSubmit)="submit()">
+    <label class="analysis__label" for="athlete">Athlete name</label>
+    <div class="analysis__row">
+      <input
+        id="athlete"
+        class="analysis__input"
+        type="text"
+        name="athlete"
+        placeholder="e.g. Lionel Messi"
+        [(ngModel)]="athleteName"
+        [disabled]="isSubmitting || isPolling"
+        autocomplete="off"
+      />
+      <button
+        class="analysis__button"
+        type="submit"
+        [disabled]="!athleteName.trim() || isSubmitting || isPolling"
+      >
+        Analyze
+      </button>
+    </div>
+  </form>
+
+  <div class="analysis__error" *ngIf="errorMessage" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <div class="analysis__status" *ngIf="job && job.status === 'PENDING'">
+    <span class="analysis__spinner" aria-hidden="true"></span>
+    <div>
+      <p class="analysis__status-text">
+        Processing analysis for <strong>{{ job.athlete }}</strong>…
+      </p>
+      <p class="analysis__status-meta">
+        Job <code>{{ job.id }}</code> &middot; polling every 1.5s
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="analysis__results"
+    *ngIf="job && job.status === 'COMPLETED' && job.metrics as metrics"
+  >
+    <div class="analysis__results-head">
+      <h2 class="analysis__results-title">Results for {{ job.athlete }}</h2>
+      <span class="analysis__badge analysis__badge--done">COMPLETED</span>
+    </div>
+
+    <ul class="analysis__metrics">
+      <li class="analysis__metric">
+        <span class="analysis__metric-label">Foot Contact</span>
+        <span class="analysis__metric-value">{{ metrics.foot_contact }} s</span>
+      </li>
+      <li class="analysis__metric">
+        <span class="analysis__metric-label">Foot Off</span>
+        <span class="analysis__metric-value">{{ metrics.foot_off }} s</span>
+      </li>
+      <li class="analysis__metric">
+        <span class="analysis__metric-label">Turning Point</span>
+        <span class="analysis__metric-value">{{ metrics.turning_point }} s</span>
+      </li>
+    </ul>
+
+    <p class="analysis__results-meta" *ngIf="job.completedAt">
+      Completed at {{ job.completedAt | date: 'medium' }}
+    </p>
+  </div>
+</section>

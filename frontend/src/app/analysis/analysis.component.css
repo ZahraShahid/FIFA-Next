@@ -1,0 +1,239 @@
+:host {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+  --color-text: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-primary: #38bdf8;
+  --color-primary-strong: #0ea5e9;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+
+  display: block;
+  min-height: 100vh;
+  padding: 2.5rem 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.analysis {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.analysis__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.analysis__title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+.analysis__subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.analysis__form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.analysis__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-muted);
+}
+
+.analysis__row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.analysis__input {
+  flex: 1;
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.analysis__input:focus {
+  border-color: var(--color-primary);
+}
+
+.analysis__input:disabled {
+  opacity: 0.6;
+}
+
+.analysis__button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #03252f;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.analysis__button:hover:not(:disabled) {
+  background: var(--color-primary-strong);
+}
+
+.analysis__button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.analysis__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.analysis__error {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid var(--color-danger);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.analysis__status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.analysis__spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.analysis__status-text {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.analysis__status-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.analysis__status-meta code {
+  font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.analysis__results {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analysis__results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.analysis__results-title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.analysis__badge {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+}
+
+.analysis__badge--done {
+  color: var(--color-success);
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.analysis__metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.analysis__metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.analysis__metric-label {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.analysis__metric-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.analysis__results-meta {
+  margin: 1.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}

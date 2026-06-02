@@ -1,0 +1,27 @@
+{
+  "name": "fifa-next-backend",
+  "version": "1.0.0",
+  "description": "Asynchronous biomechanics analysis API for the FIFA Next assessment. Uses an in-memory job engine (no external infrastructure such as Redis).",
+  "main": "src/app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "fifa-next",
+    "biomechanics",
+    "express",
+    "async-queue",
+    "in-memory"
+  ],
+  "author": "FIFA Next Assessment Candidate",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
